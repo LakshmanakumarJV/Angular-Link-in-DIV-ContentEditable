@@ -1,0 +1,29 @@
+<p>Start editing to see some magic happen :)</p>
+
+<div
+  *ngIf="visible"
+  id="Risk Docs"
+  tabindex="1"
+  contenteditable
+  (blur)="toggle()"
+  (input)="onNameChange($event.target.innerHTML)"
+>
+  Enter your Link
+</div>
+
+<a
+  *ngIf="isAnchor"
+  id="anchorLink"
+  href="{{ name }}"
+  target="_blank"
+  (contextmenu)="onRightClick($event)"
+  >{{ getHyperLinkText(name) }}
+</a>
+
+<div #LinkMenu *ngIf="isEdit">
+  <div class="rm-context-menu">
+    <button class="rm-context-button" (click)="editLinkCell('Risk Docs')">
+      Edit
+    </button>
+  </div>
+</div>
